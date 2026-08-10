@@ -65,42 +65,131 @@
           <span class="close-x">✕</span>
         </div>
 
-        <div class="section">
-          <h3>Main</h3>
-          <div class="grid">
-            <div class="field"><label>Credit Card Gateway <span class="req">*</span></label><select><option>DevCode</option></select></div>
-            <div class="field"><label>Display Name <span class="req">*</span></label><input value="Safecharge N3D5 Demo"></div>
-            <div class="field"><label>Username <span class="req">*</span></label><input value="biforex_admin"></div>
+        <section class="section is-expanded">
+          <button class="section-header" type="button">
+            <span>Main</span>
+            <span class="section-toggle">▾</span>
+          </button>
+          <div class="section-body">
+            <div class="grid">
+              <div class="field"><label>Credit Card Gateway <span class="req">*</span></label><select><option>DevCode</option></select></div>
+              <div class="field"><label>Display Name <span class="req">*</span></label><input value="Safecharge N3D5 Demo"></div>
+              <div class="field"><label>Username <span class="req">*</span></label><input value="biforex_admin"></div>
+            </div>
           </div>
-        </div>
+        </section>
 
-        <div class="section">
-          <h3>Refund Settings</h3>
-          <div class="checkrow" id="mainToggles">
-            <label class="checkline"><input type="checkbox" id="chkAutoRefund" checked> Is Enabled Automatic Refund</label>
-            <label class="checkline"><input type="checkbox" id="chkAutoOct" checked> Is Enabled Automatic OCT</label>
-            <label class="checkline"><input type="checkbox" id="chkManualRefund" checked> Is Enabled Manual Refund</label>
-            <label class="checkline"><input type="checkbox" id="chkManualOct"> Is Enabled Manual OCT</label>
+        <section class="section is-expanded">
+          <button class="section-header" type="button">
+            <span>Limits</span>
+            <span class="section-toggle">▾</span>
+          </button>
+          <div class="section-body">
+            <div class="grid">
+              <div class="field"><label>Daily Limit</label><input value="100000"></div>
+              <div class="field"><label>Monthly Limit</label><input value="500000"></div>
+              <div class="field"><label>Currency</label><select><option>USD</option></select></div>
+              <div class="field"><label>Threshold</label><input value="25000"></div>
+            </div>
           </div>
+        </section>
 
-          <div class="grid" style="margin-bottom:6px;">
-            <div class="field"><label>Credit Card Gateway</label><select><option>SafeCharge</option></select></div>
+        <section class="section is-expanded">
+          <button class="section-header" type="button">
+            <span>Block BINs from GW Account</span>
+            <span class="section-toggle">▾</span>
+          </button>
+          <div class="section-body">
+            <div class="field field-full">
+              <label>Blocked BINs</label>
+              <textarea placeholder="Enter comma-separated BINs"></textarea>
+            </div>
           </div>
+        </section>
 
-          <div class="config-row">
-            <div class="left">
-              <span>⚙️</span>
-              <div>
-                <div style="font-weight:700;font-size:12.5px;">Configure by Card Brand</div>
-                <div class="desc">Set <b>per-brand</b> refund &amp; OCT/payout rules, based on the toggles above</div>
+        <section class="section is-expanded">
+          <button class="section-header" type="button">
+            <span>Refund Settings</span>
+            <span class="section-toggle">▾</span>
+          </button>
+          <div class="section-body">
+            <div class="card-config-card">
+              <div class="card-config-header">
+                <div>
+                  <div class="card-config-title">Card brand refund / OCT settings</div>
+                </div>
               </div>
-            </div>
-            <div style="display:flex;align-items:center;gap:8px;">
-              <span class="new-badge">NEW</span>
-              <button class="btn btn-purple" onclick="openModal()">Configure by Card Brand</button>
+
+              <table class="card-config-table">
+                <thead>
+                  <tr>
+                    <th>Card Brand</th>
+                    <th>Automatic Refund</th>
+                    <th>Manual Refund</th>
+                    <th>Automatic OCT / Payout</th>
+                    <th>Manual OCT / Payout</th>
+                  </tr>
+                </thead>
+                <tbody id="brandRows">
+                  <tr data-brand="visa" data-name="Visa" data-default="true">
+                    <td>
+                      <div class="brand-row-inner">
+                        <div class="brand-cell">
+                          <span class="brand-badge visa-badge">VISA</span>
+                          <div>
+                            <div class="brand-name">Visa</div>
+                            <div class="brand-subtext">default</div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><input type="checkbox" class="cb-check" checked></td>
+                    <td><input type="checkbox" class="cb-check" checked></td>
+                    <td><input type="checkbox" class="cb-check" checked></td>
+                    <td><input type="checkbox" class="cb-check" checked></td>
+                  </tr>
+                  <tr data-brand="mastercard" data-name="Mastercard" data-default="true">
+                    <td>
+                      <div class="brand-row-inner">
+                        <div class="brand-cell">
+                          <span class="brand-badge mc-badge">MC</span>
+                          <div>
+                            <div class="brand-name">Mastercard</div>
+                            <div class="brand-subtext">default</div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                    <td><input type="checkbox" class="cb-check" checked></td>
+                    <td><input type="checkbox" class="cb-check" checked></td>
+                    <td><input type="checkbox" class="cb-check" checked></td>
+                    <td><input type="checkbox" class="cb-check" checked></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="brand-actions">
+                <button class="btn btn-outline add-brand-btn" id="addBrandBtn" type="button">+ Add Card Brand</button>
+              </div>
+
             </div>
           </div>
-        </div>
+        </section>
+
+        <section class="section is-expanded">
+          <button class="section-header" type="button">
+            <span>API Settings</span>
+            <span class="section-toggle">▾</span>
+          </button>
+          <div class="section-body">
+            <div class="grid">
+              <div class="field"><label>API URL</label><input value="https://api.safecharge.com"></div>
+              <div class="field"><label>Secret Key</label><input value="••••••••••••••"></div>
+              <div class="field"><label>Timeout (s)</label><input value="30"></div>
+              <div class="field"><label>Retry Count</label><input value="3"></div>
+            </div>
+          </div>
+        </section>
 
         <div class="footer-actions">
           <button class="btn btn-outline">Cancel</button>
@@ -111,72 +200,10 @@
   </div>
 </div>
 
-<div class="overlay" id="overlay">
-  <div class="modal">
-    <div class="modal-head">
-      <h3>Refund &amp; OCT / Payout by Card Brand</h3>
-      <span class="close-x" onclick="closeModal()">✕</span>
-    </div>
-    <div class="modal-body">
-      <div class="info-banner">
-        ℹ️ VISA and Mastercard are included by default for every Gateway Account. Additional card brands may be configured as needed.<br>
-        A column is only editable here if its matching toggle is enabled on the main account configuration.<br>
-        <b>Any card brand not listed below still follows the main toggles automatically</b> — it is never blocked just because it has no row here.
-      </div>
-
-      <table class="cb-table">
-        <thead>
-          <tr>
-            <th>Card Brand</th>
-            <th id="thAutoRefund">Automatic<br>Refund</th>
-            <th id="thManualRefund">Manual<br>Refund</th>
-            <th id="thAutoOct">Automatic<br>OCT / Payout</th>
-            <th id="thManualOct">Manual<br>OCT / Payout</th>
-          </tr>
-        </thead>
-        <tbody id="brandRows">
-          <tr data-brand="visa" data-default="true">
-            <td><div class="brand-row-inner"><div class="brand-cell"><div class="brand-swatch visa-swatch">VISA</div>Visa <span style="color:var(--text-mute);font-weight:500;font-size:10px;">(default)</span></div></div></td>
-            <td><input type="checkbox" class="cb-check col-autoRefund" checked></td>
-            <td><input type="checkbox" class="cb-check col-manualRefund" checked></td>
-            <td><input type="checkbox" class="cb-check col-autoOct" checked></td>
-            <td><input type="checkbox" class="cb-check col-manualOct"></td>
-          </tr>
-          <tr data-brand="mastercard" data-default="true">
-            <td><div class="brand-row-inner"><div class="brand-cell"><div class="brand-swatch mc-swatch"></div>Mastercard <span style="color:var(--text-mute);font-weight:500;font-size:10px;">(default)</span></div></div></td>
-            <td><input type="checkbox" class="cb-check col-autoRefund" checked></td>
-            <td><input type="checkbox" class="cb-check col-manualRefund" checked></td>
-            <td><input type="checkbox" class="cb-check col-autoOct" checked></td>
-            <td><input type="checkbox" class="cb-check col-manualOct"></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div style="position:relative;">
-        <button class="add-brand-btn" onclick="toggleBrandPicker(event)">+ Add Card Brand</button>
-        <div class="brand-picker" id="brandPicker">
-          <input type="text" class="brand-picker-search" id="brandSearch" placeholder="Search card brands…" oninput="renderBrandPicker(this.value)">
-          <div class="brand-picker-list" id="brandPickerList"></div>
-        </div>
-      </div>
-      <div class="locked-msg" id="lockedMsg"></div>
-    </div>
-    <div class="modal-foot">
-      <span class="save-hint">Saves independently of the account form</span>
-      <button class="btn btn-outline" onclick="closeModal()">Cancel</button>
-      <button class="btn btn-purple" onclick="saveBrandConfig()">Save Card Brand Settings</button>
-    </div>
-  </div>
-</div>
-
-<div class="confirm-overlay" id="confirmOverlay">
-  <div class="confirm-box">
-    <h4 id="confirmTitle">Remove card brand?</h4>
-    <p id="confirmText">This will stop refund/OCT settings from being tracked separately for this brand. It may affect live transactions for that brand.</p>
-    <div class="confirm-actions">
-      <button class="btn btn-outline" onclick="closeConfirm()">Cancel</button>
-      <button class="btn btn-danger" onclick="confirmRemove()">Remove</button>
-    </div>
+<div class="brand-picker-overlay" id="brandPickerOverlay">
+  <div class="brand-picker" id="brandPicker">
+    <input type="text" class="brand-picker-search" id="brandSearch" placeholder="Search card brands...">
+    <div class="brand-picker-list" id="brandPickerList"></div>
   </div>
 </div>
 
