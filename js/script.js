@@ -110,7 +110,30 @@ function addBrandRow(name, color, initials) {
   showToast(name + ' added');
 }
 
-document.getElementById('addBrandBtn').addEventListener('click', toggleBrandPicker);
+const refundToggleRow = document.getElementById('refundToggleRow');
+const brandConfigWrapper = document.getElementById('brandConfigWrapper');
+const configureByCardBtn = document.getElementById('configureByCardBtn');
+
+function toggleBrandConfig(showBrandConfig) {
+  refundToggleRow.style.display = showBrandConfig ? 'none' : 'flex';
+  brandConfigWrapper.classList.toggle('hidden', !showBrandConfig);
+  configureByCardBtn.setAttribute('aria-pressed', String(showBrandConfig));
+  configureByCardBtn.classList.toggle('active', showBrandConfig);
+
+  if (!showBrandConfig) {
+    document.getElementById('brandPicker').classList.remove('open');
+  }
+}
+
+configureByCardBtn.addEventListener('click', () => {
+  const isActive = configureByCardBtn.getAttribute('aria-pressed') === 'true';
+  toggleBrandConfig(!isActive);
+});
+
+const addBrandButton = document.getElementById('addBrandBtn');
+if (addBrandButton) {
+  addBrandButton.addEventListener('click', toggleBrandPicker);
+}
 document.getElementById('brandSearch').addEventListener('input', event => renderBrandPicker(event.target.value));
 document.addEventListener('click', event => {
   const picker = document.getElementById('brandPicker');
@@ -131,4 +154,5 @@ document.addEventListener('keydown', event => {
   }
 });
 
+toggleBrandConfig(false);
 renderBrandPicker('');

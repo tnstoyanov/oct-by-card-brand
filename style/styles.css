@@ -107,6 +107,33 @@ tr.selected td{background:var(--purple-light);}
 .card-config-header{margin-bottom:12px;}
 .card-config-title{font-size:12.5px;font-weight:700;color:var(--text);}
 .card-config-note{font-size:11.5px;color:var(--text-mute);margin-top:4px;}
+.gateway-inline-row{display:flex;align-items:center;gap:12px;}
+.gateway-inline-row select{flex:1;min-width:0;}
+.refund-toggle-row{
+  display:flex;align-items:center;gap:18px;flex-wrap:wrap;
+  border:1px solid var(--border);background:#fff;border-radius:8px;padding:12px 14px;margin:8px 0 14px;
+}
+.refund-option{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:var(--text);}
+.refund-option input{width:14px;height:14px;accent-color:var(--purple);}
+.configure-by-card-btn{
+  display:inline-flex;align-items:center;gap:8px;white-space:nowrap;
+  padding:7px 12px;border:1px solid var(--border);background:#f5f6fb;color:var(--text);
+  border-radius:6px;font-size:12px;font-weight:600;cursor:pointer;transition:all .2s ease;
+}
+.configure-by-card-btn.active{
+  background:var(--purple);color:#fff;border-color:var(--purple);
+}
+.toggle-track{
+  position:relative;display:inline-block;width:28px;height:16px;border-radius:999px;
+  background:rgba(108,79,224,.2);transition:all .2s ease;flex-shrink:0;
+}
+.toggle-thumb{
+  position:absolute;left:2px;top:2px;width:12px;height:12px;border-radius:50%;background:#fff;
+  box-shadow:0 1px 2px rgba(0,0,0,.16);transition:all .2s ease;
+}
+.configure-by-card-btn.active .toggle-track{background:rgba(255,255,255,.25);}
+.configure-by-card-btn.active .toggle-thumb{left:14px;background:#fff;}
+.brand-config-wrapper.hidden{display:none;}
 .card-config-table{width:100%;border-collapse:collapse;font-size:11.5px;}
 .card-config-table th{font-size:10.5px;color:var(--text-mute);text-align:center;padding:8px 6px;border-bottom:1px solid var(--border);font-weight:700;}
 .card-config-table th:first-child{text-align:left;}
