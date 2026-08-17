@@ -75,6 +75,17 @@ function toggleBrandPicker(event) {
   }
 }
 
+function setManualOnlyChecks(checkboxes) {
+  checkboxes.forEach((checkbox, index) => {
+    checkbox.checked = [1, 3].includes(index);
+  });
+}
+
+function resetBrandRowChecks(row) {
+  const rowChecks = Array.from(row.querySelectorAll('.cb-check'));
+  setManualOnlyChecks(rowChecks);
+}
+
 function addBrandRow(name, color, initials) {
   const row = document.createElement('tr');
   row.dataset.brand = name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
@@ -93,11 +104,13 @@ function addBrandRow(name, color, initials) {
         <button class="remove-brand" type="button" title="Remove ${name}">✕</button>
       </div>
     </td>
-    <td><input type="checkbox" class="cb-check" checked></td>
-    <td><input type="checkbox" class="cb-check" checked></td>
-    <td><input type="checkbox" class="cb-check" checked></td>
-    <td><input type="checkbox" class="cb-check" checked></td>
+    <td><input type="checkbox" class="cb-check"></td>
+    <td><input type="checkbox" class="cb-check"></td>
+    <td><input type="checkbox" class="cb-check"></td>
+    <td><input type="checkbox" class="cb-check"></td>
   `;
+
+  resetBrandRowChecks(row);
 
   row.querySelector('.remove-brand').addEventListener('click', () => {
     row.remove();
@@ -122,6 +135,12 @@ function toggleBrandConfig(showBrandConfig) {
 
   if (!showBrandConfig) {
     document.getElementById('brandPicker').classList.remove('open');
+    const defaultChecks = Array.from(refundToggleRow.querySelectorAll('input[type="checkbox"]'));
+    setManualOnlyChecks(defaultChecks);
+
+    Array.from(document.querySelectorAll('#brandRows tr')).forEach(row => {
+      resetBrandRowChecks(row);
+    });
   }
 }
 
