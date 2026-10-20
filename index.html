@@ -128,10 +128,6 @@
                         <option>SafeCharge</option>
                         <option>SafeCharge3D</option>
                       </select>
-                      <button class="configure-by-card-btn" id="configureByCardBtn" type="button" aria-pressed="false">
-                        <span class="toggle-track"><span class="toggle-thumb"></span></span>
-                        <span>Configure by Card</span>
-                      </button>
                     </div>
                   </div>
                 </div>
@@ -146,6 +142,11 @@
                 <label class="refund-option"><input type="checkbox" checked> Is Enabled Manual Refund</label>
                 <label class="refund-option"><input type="checkbox" checked> Is Enabled Manual OCT</label>
               </div>
+
+              <button class="override-by-card-btn" id="overrideByCardBtn" type="button" aria-pressed="false">
+                <span class="toggle-track"><span class="toggle-thumb"></span></span>
+                <span>Override by Card Brand</span>
+              </button>
 
               <div class="brand-config-wrapper hidden" id="brandConfigWrapper">
                 <table class="card-config-table">
@@ -199,6 +200,7 @@
                 <div class="brand-actions">
                   <button class="btn btn-outline add-brand-btn" id="addBrandBtn" type="button">+ Add Card Brand</button>
                 </div>
+
               </div>
 
             </div>

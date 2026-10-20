@@ -125,13 +125,13 @@ function addBrandRow(name, color, initials) {
 
 const refundToggleRow = document.getElementById('refundToggleRow');
 const brandConfigWrapper = document.getElementById('brandConfigWrapper');
-const configureByCardBtn = document.getElementById('configureByCardBtn');
+const overrideByCardBtn = document.getElementById('overrideByCardBtn');
 
 function toggleBrandConfig(showBrandConfig) {
   refundToggleRow.style.display = showBrandConfig ? 'none' : 'flex';
   brandConfigWrapper.classList.toggle('hidden', !showBrandConfig);
-  configureByCardBtn.setAttribute('aria-pressed', String(showBrandConfig));
-  configureByCardBtn.classList.toggle('active', showBrandConfig);
+  overrideByCardBtn.setAttribute('aria-pressed', String(showBrandConfig));
+  overrideByCardBtn.classList.toggle('active', showBrandConfig);
 
   if (!showBrandConfig) {
     document.getElementById('brandPicker').classList.remove('open');
@@ -144,8 +144,8 @@ function toggleBrandConfig(showBrandConfig) {
   }
 }
 
-configureByCardBtn.addEventListener('click', () => {
-  const isActive = configureByCardBtn.getAttribute('aria-pressed') === 'true';
+overrideByCardBtn.addEventListener('click', () => {
+  const isActive = overrideByCardBtn.getAttribute('aria-pressed') === 'true';
   toggleBrandConfig(!isActive);
 });
 
