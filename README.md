@@ -1,6 +1,6 @@
 # Card Brand Refund/OCT Config — Mockup
 
-Static, dependency-free HTML/CSS/JS mockup of the "Override by Card" feature
+Static, dependency-free HTML/CSS/JS mockup of the "Configure by Card Brand" feature
 for Credit Card Gateway Accounts. Built to demo the business logic before this gets
 built for real — nothing here talks to a backend, all state is in-memory.
 
@@ -14,7 +14,7 @@ Just open `index.html` in a browser. No build step, no server needed.
 
 ## What it demonstrates
 - The 4 master toggles (Refund Settings) gate the matching column in the
-  "Override by Card" modal — disabled master toggle greys out and
+  "Configure by Card Brand" modal — disabled master toggle greys out and
   unchecks that column for every brand.
 - Visa & Mastercard are always present by default; other brands are added
   manually via "+ Add Card Brand" and default to whatever the master toggles

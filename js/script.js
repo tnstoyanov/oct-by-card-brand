@@ -75,15 +75,21 @@ function toggleBrandPicker(event) {
   }
 }
 
-function setManualOnlyChecks(checkboxes) {
+function setManualBrandChecks(checkboxes) {
   checkboxes.forEach((checkbox, index) => {
     checkbox.checked = [1, 3].includes(index);
   });
 }
 
+function setManualMasterChecks(checkboxes) {
+  checkboxes.forEach((checkbox, index) => {
+    checkbox.checked = [2, 3].includes(index);
+  });
+}
+
 function resetBrandRowChecks(row) {
   const rowChecks = Array.from(row.querySelectorAll('.cb-check'));
-  setManualOnlyChecks(rowChecks);
+  setManualBrandChecks(rowChecks);
 }
 
 function addBrandRow(name, color, initials) {
@@ -125,18 +131,18 @@ function addBrandRow(name, color, initials) {
 
 const refundToggleRow = document.getElementById('refundToggleRow');
 const brandConfigWrapper = document.getElementById('brandConfigWrapper');
-const overrideByCardBtn = document.getElementById('overrideByCardBtn');
+const configureByCardBrandBtn = document.getElementById('configureByCardBrandBtn');
 
 function toggleBrandConfig(showBrandConfig) {
   refundToggleRow.style.display = showBrandConfig ? 'none' : 'flex';
   brandConfigWrapper.classList.toggle('hidden', !showBrandConfig);
-  overrideByCardBtn.setAttribute('aria-pressed', String(showBrandConfig));
-  overrideByCardBtn.classList.toggle('active', showBrandConfig);
+  configureByCardBrandBtn.setAttribute('aria-pressed', String(showBrandConfig));
+  configureByCardBrandBtn.classList.toggle('active', showBrandConfig);
 
   if (!showBrandConfig) {
     document.getElementById('brandPicker').classList.remove('open');
     const defaultChecks = Array.from(refundToggleRow.querySelectorAll('input[type="checkbox"]'));
-    setManualOnlyChecks(defaultChecks);
+    setManualMasterChecks(defaultChecks);
 
     Array.from(document.querySelectorAll('#brandRows tr')).forEach(row => {
       resetBrandRowChecks(row);
@@ -144,8 +150,8 @@ function toggleBrandConfig(showBrandConfig) {
   }
 }
 
-overrideByCardBtn.addEventListener('click', () => {
-  const isActive = overrideByCardBtn.getAttribute('aria-pressed') === 'true';
+configureByCardBrandBtn.addEventListener('click', () => {
+  const isActive = configureByCardBrandBtn.getAttribute('aria-pressed') === 'true';
   toggleBrandConfig(!isActive);
 });
 
